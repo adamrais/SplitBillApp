@@ -11,6 +11,12 @@
 		E53DDA4126CAE8C400BE825E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA4026CAE8C400BE825E /* ContentView.swift */; };
 		E53DDA4326CAE8C500BE825E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53DDA4226CAE8C500BE825E /* Assets.xcassets */; };
 		E53DDA4626CAE8C500BE825E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53DDA4526CAE8C500BE825E /* Preview Assets.xcassets */; };
+		E53DDA5126CAE92F00BE825E /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA5026CAE92F00BE825E /* mainView.swift */; };
+		E53DDA5326CAF33500BE825E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA5226CAF33500BE825E /* GroupModel.swift */; };
+		E53DDA5626CAF3C500BE825E /* GroupContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA5526CAF3C500BE825E /* GroupContainers.swift */; };
+		E53DDA5826CAF4A200BE825E /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA5726CAF4A200BE825E /* GroupViewModel.swift */; };
+		E5493EDC26CC7EE8008565E3 /* moneyOwnedSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5493EDB26CC7EE8008565E3 /* moneyOwnedSectionView.swift */; };
+		E5493EDE26CC9DBE008565E3 /* CurrencyStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5493EDD26CC9DBE008565E3 /* CurrencyStepperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		E53DDA4226CAE8C500BE825E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E53DDA4526CAE8C500BE825E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E53DDA4726CAE8C500BE825E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E53DDA5026CAE92F00BE825E /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
+		E53DDA5226CAF33500BE825E /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		E53DDA5526CAF3C500BE825E /* GroupContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupContainers.swift; sourceTree = "<group>"; };
+		E53DDA5726CAF4A200BE825E /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		E5493EDB26CC7EE8008565E3 /* moneyOwnedSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyOwnedSectionView.swift; sourceTree = "<group>"; };
+		E5493EDD26CC9DBE008565E3 /* CurrencyStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStepperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,9 @@
 		E53DDA3D26CAE8C400BE825E /* SplitBillApp */ = {
 			isa = PBXGroup;
 			children = (
+				E53DDA4F26CAE8E500BE825E /* Views */,
+				E53DDA4E26CAE8DF00BE825E /* ViewModel */,
+				E53DDA4D26CAE8D800BE825E /* Model */,
 				E53DDA3E26CAE8C400BE825E /* SplitBillAppApp.swift */,
 				E53DDA4026CAE8C400BE825E /* ContentView.swift */,
 				E53DDA4226CAE8C500BE825E /* Assets.xcassets */,
@@ -67,6 +82,41 @@
 				E53DDA4526CAE8C500BE825E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E53DDA4D26CAE8D800BE825E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E53DDA5226CAF33500BE825E /* GroupModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E53DDA4E26CAE8DF00BE825E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E53DDA5726CAF4A200BE825E /* GroupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E53DDA4F26CAE8E500BE825E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E53DDA5426CAF3AE00BE825E /* Helpers */,
+				E53DDA5026CAE92F00BE825E /* mainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E53DDA5426CAF3AE00BE825E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E53DDA5526CAF3C500BE825E /* GroupContainers.swift */,
+				E5493EDB26CC7EE8008565E3 /* moneyOwnedSectionView.swift */,
+				E5493EDD26CC9DBE008565E3 /* CurrencyStepperView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +188,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53DDA5126CAE92F00BE825E /* mainView.swift in Sources */,
 				E53DDA4126CAE8C400BE825E /* ContentView.swift in Sources */,
+				E53DDA5826CAF4A200BE825E /* GroupViewModel.swift in Sources */,
 				E53DDA3F26CAE8C400BE825E /* SplitBillAppApp.swift in Sources */,
+				E53DDA5326CAF33500BE825E /* GroupModel.swift in Sources */,
+				E5493EDE26CC9DBE008565E3 /* CurrencyStepperView.swift in Sources */,
+				E53DDA5626CAF3C500BE825E /* GroupContainers.swift in Sources */,
+				E5493EDC26CC7EE8008565E3 /* moneyOwnedSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
