@@ -9,6 +9,7 @@ import SwiftUI
 
 struct mainView: View {
     @StateObject var vm = groupsViewModel()
+    @State private var showSheet = false
     
     var body: some View {
         NavigationView {
@@ -16,8 +17,9 @@ struct mainView: View {
                 moneyOwnedSectionView(moneyOwned: vm.totalMoneyOwned)
                 ScrollView {
                     ForEach(vm.groups) { group in
-                        GroupContainers(name: group.name, numberOfPerson: group.numberOfPerson, dateCreated: group.dateCreated)
-                    }                }
+                        GroupContainers(groupInfo: group)
+                    }
+                }
             }.navigationTitle("Groups")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: Button(action: {
@@ -26,12 +28,15 @@ struct mainView: View {
                 Image(systemName: "line.horizontal.3")
                     .foregroundColor(.black)
             }), trailing: Button(action: {
+                showSheet = true
                 //vm.fetchStaticGroup()
-                vm.groups.append(group(name: "Group1", numberOfPerson: 2, dateCreated: Date()))
             }, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.black)
             }))
+            .sheet(isPresented: $showSheet) {
+                NewGroupView(vm: vm, showModal: $showSheet)
+            }
         }
     }
 }

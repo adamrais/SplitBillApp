@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct group: Identifiable {
+struct group: Identifiable, Codable {
     var id = UUID()
     var name: String
     var numberOfPerson: Int

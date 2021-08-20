@@ -34,7 +34,6 @@ struct pickerModifier: ViewModifier {
             .foregroundColor(.white)
             .font(.system(.title, design: .rounded)
             .bold())
-            .foregroundColor(.white)
         }
 }
 

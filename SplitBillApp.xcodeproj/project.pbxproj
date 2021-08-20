@@ -17,6 +17,7 @@
 		E53DDA5826CAF4A200BE825E /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53DDA5726CAF4A200BE825E /* GroupViewModel.swift */; };
 		E5493EDC26CC7EE8008565E3 /* moneyOwnedSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5493EDB26CC7EE8008565E3 /* moneyOwnedSectionView.swift */; };
 		E5493EDE26CC9DBE008565E3 /* CurrencyStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5493EDD26CC9DBE008565E3 /* CurrencyStepperView.swift */; };
+		E5BBFB0B26CDEB5700DFC701 /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBFB0A26CDEB5700DFC701 /* NewGroupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E53DDA5726CAF4A200BE825E /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		E5493EDB26CC7EE8008565E3 /* moneyOwnedSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyOwnedSectionView.swift; sourceTree = "<group>"; };
 		E5493EDD26CC9DBE008565E3 /* CurrencyStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStepperView.swift; sourceTree = "<group>"; };
+		E5BBFB0A26CDEB5700DFC701 /* NewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				E53DDA5426CAF3AE00BE825E /* Helpers */,
 				E53DDA5026CAE92F00BE825E /* mainView.swift */,
+				E5BBFB0A26CDEB5700DFC701 /* NewGroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E53DDA5126CAE92F00BE825E /* mainView.swift in Sources */,
+				E5BBFB0B26CDEB5700DFC701 /* NewGroupView.swift in Sources */,
 				E53DDA4126CAE8C400BE825E /* ContentView.swift in Sources */,
 				E53DDA5826CAF4A200BE825E /* GroupViewModel.swift in Sources */,
 				E53DDA3F26CAE8C400BE825E /* SplitBillAppApp.swift in Sources */,

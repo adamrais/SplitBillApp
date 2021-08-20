@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct GroupContainers: View {
-    var name: String
-    var numberOfPerson: Int
-    var dateCreated: Date
-    
+//    var name: String
+//    var numberOfPerson: Int
+//    var dateCreated: Date
+    let groupInfo: group
     var body: some View {
         VStack {
             ZStack {
@@ -21,17 +21,17 @@ struct GroupContainers: View {
                     .cornerRadius(15)
                 VStack {
                     HStack {
-                        Text("\(name)")
+                        Text("\(groupInfo.name)")
                         Spacer()
                         Label(
-                            title: { Text("\(numberOfPerson)") },
+                            title: { Text("\(groupInfo.numberOfPerson)") },
                             icon: { Image(systemName: "person") }
                         )
                     }.padding()
                     .font(.title2)
                     VStack {
                         Text("Date created: ")
-                        Text(dateCreated, style: .date)
+                        Text(groupInfo.dateCreated, style: .date)
                     }
                 }.foregroundColor(.white)
                 .padding()
@@ -42,6 +42,6 @@ struct GroupContainers: View {
 
 struct GroupContainers_Previews: PreviewProvider {
     static var previews: some View {
-        GroupContainers(name: "group1", numberOfPerson: 2, dateCreated: Date())
+        GroupContainers(groupInfo: group(name: "group1", numberOfPerson: 2, dateCreated: Date()))
     }
 }

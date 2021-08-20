@@ -8,19 +8,29 @@
 import Foundation
 
 class groupsViewModel: ObservableObject {
-    @Published var groups = [group]()
+    static let groupsKey = "Movies"
+    static let defaultGroup = [
+        group(name: "Init group", numberOfPerson: 4, dateCreated: Date().addingTimeInterval(-86400))
+    ]
+    @Published var groups = loadGroups()
     @Published var totalMoneyOwned: Int
     
     init() {
-        //fetchStaticGroup()
         totalMoneyOwned = 0
-        groups.append(group(name: "Init group", numberOfPerson: 4, dateCreated: Date().addingTimeInterval(-86400)))
-        print(groups)
     }
     
-    func fetchStaticGroup() {
-        groups.append(group(name: "test group", numberOfPerson: 2, dateCreated: Date()))
-        print(groups)
+    static func loadGroups() -> [group] {
+        let savedGroups = UserDefaults.standard.object(forKey: groupsViewModel.groupsKey)
+        if let savedGroups = savedGroups as? Data {
+            let decoder = JSONDecoder()
+            return (try? decoder.decode([group].self, from: savedGroups)) ?? groupsViewModel.defaultGroup
+        }
+        return groupsViewModel.defaultGroup
+    }
+    
+    func addGroup(name: String, numberOfPerson: Int, dateCreated: Date) {
+        let newGroup = group(name: name, numberOfPerson: numberOfPerson, dateCreated: dateCreated)
+        groups.append(newGroup)
     }
     
 }
