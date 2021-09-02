@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct CurrencyStepperView: View {
-    var currencies = ["CAD","USD", "YEN", "EURO"]
     @State private var selectedCurrency = 0
+    @EnvironmentObject var vmEnv: groupsViewModel
     
     var body: some View {
         ZStack {
             Rectangle()
                 .cornerRadius(5)
                 .frame(width: 120, height: 40)
-            Picker(selection: $selectedCurrency, label: Label(
-                    "\(currencies[selectedCurrency])", systemImage: "chevron.down")) {
-                ForEach(0..<currencies.count) {
-                    Text(self.currencies[$0])
+            Picker(selection: $vmEnv.currency, label: Label(
+                    "\(vmEnv.currencies[vmEnv.currency])", systemImage: "chevron.down")) {
+                ForEach(0..<vmEnv.currencies.count) {
+                    Text(self.vmEnv.currencies[$0])
                 }
             }.modifier(pickerModifier())
             
@@ -28,6 +28,7 @@ struct CurrencyStepperView: View {
     }
 }
 
+// modifiers
 struct pickerModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -49,5 +50,6 @@ struct VerticalLabelStyle: LabelStyle {
 struct CurrencyStepperView_Previews: PreviewProvider {
     static var previews: some View {
         CurrencyStepperView()
+            .environmentObject(groupsViewModel())
     }
 }

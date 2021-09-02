@@ -12,4 +12,6 @@ struct group: Identifiable, Codable {
     var name: String
     var numberOfPerson: Int
     var dateCreated: Date
+    var moneyBack: Int
+    var moneyDebt: Int
 }

@@ -1,22 +1,22 @@
 //
-//  NewGroupView.swift
+//  GroupSettingsView.swift
 //  SplitBillApp
 //
-//  Created by Adam Rais on 2021-08-18.
+//  Created by Adam Rais on 2021-08-20.
 //
 
 import SwiftUI
 
-struct NewGroupView: View {
+struct GroupSettingsView: View {
+    @Binding var showModal: Bool
     @ObservedObject var vm = groupsViewModel()
     @EnvironmentObject var vmEnv: groupsViewModel
-    @Binding var showModal: Bool
+    
     @State private var groupName = ""
     @State private var addMember = false
     @State private var membersCount = 0
     @State private var member = ""
     var body: some View {
-        
         VStack {
             //Header
             HStack(alignment: .top) {
@@ -24,8 +24,13 @@ struct NewGroupView: View {
                     showModal.toggle()
                 }
                 Spacer()
-                Text("New Group")
+                Text("Group Settings")
                 Spacer()
+                Button("\(Image(systemName: "checkmark"))") {
+                    vm.updateGroup(name: groupName, numberOfPerson: membersCount+1, dateCreated: Date(), moneyBack: 0, moneyDebt: 0)
+                    showModal.toggle()
+                    print("test")
+                }
             }.padding()
             .modifier(headerModifier())
             Spacer()
@@ -60,53 +65,52 @@ struct NewGroupView: View {
                         }.foregroundColor(.black)
                     })
                 }
+                
+                Section(header: Text("Currency")) {
+                    CurrencyStepperView()
+                }
+                
+                categorySection
             }
             
             //Bottom
             Button(action: {
-                // save data
-                vm.addGroup(name: groupName, numberOfPerson: membersCount+1, dateCreated: Date(), moneyBack: 0, moneyDebt: 0)
+                // delete group
+                //vm.deleteGroup(at: )
                 showModal.toggle()
             }, label: {
-                Text("Button")
+                Text("Delete Group")
             })
-
         }
     }
-}
-
-// MARK: - modifiers
-struct ClearButton: ViewModifier {
-    @Binding var text: String
-    public func body(content: Content) -> some View {
-        ZStack(alignment: .trailing) {
-            content
-            if !text.isEmpty {
-                Button(action: {
-                    self.text = ""
-                }) {
-                    Image(systemName: "delete.left")
-                        .foregroundColor(Color(UIColor.opaqueSeparator))
+    
+    // MARK: - subViews
+    private var categorySection: some View {
+        Section(header: Text("Categories")) {
+            //TODO add categories section
+            HStack {
+                ForEach(0 ..< vmEnv.categories.count) { item in
+                    VStack {
+                        Image(systemName: vmEnv.categories[item])
+                        Text(vmEnv.categories[item]).font(.footnote)
+                    }
+                    
                 }
-                .padding(.trailing, 8)
+                Button(action: {
+                    // add action
+                    print("choosen")
+                }) {
+                    Image(systemName: "plus.circle")
+                        .font(.title2)
+                }.buttonStyle(BorderlessButtonStyle())
             }
         }
     }
 }
 
-struct headerModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .foregroundColor(.white)
-            .font(.system(.title3, design: .rounded)
-            .bold())
-            .background(Color.blue)
-        }
-}
-
-struct NewGroupView_Previews: PreviewProvider {
+struct GroupSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGroupView(showModal: .constant(true))
+        GroupSettingsView(showModal: .constant(true))
             .environmentObject(groupsViewModel())
     }
 }

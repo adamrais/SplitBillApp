@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SplitBillAppApp: App {
+    @StateObject var vmEnv = groupsViewModel()
     var body: some Scene {
         WindowGroup {
             mainView()
+                .environmentObject(vmEnv)
         }
     }
 }

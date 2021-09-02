@@ -9,6 +9,7 @@ import SwiftUI
 
 struct mainView: View {
     @StateObject var vm = groupsViewModel()
+    @EnvironmentObject var vmEnv: groupsViewModel
     @State private var showSheet = false
     
     var body: some View {
@@ -17,8 +18,10 @@ struct mainView: View {
                 moneyOwnedSectionView(moneyOwned: vm.totalMoneyOwned)
                 ScrollView {
                     ForEach(vm.groups) { group in
-                        GroupContainers(groupInfo: group)
-                    }
+                        NavigationLink(destination: currentGroupView(groupInfo: group)) {
+                            GroupContainers(groupInfo: group)
+                        }
+                    }.onDelete(perform: vm.deleteGroup)
                 }
             }.navigationTitle("Groups")
             .navigationBarTitleDisplayMode(.inline)
@@ -29,7 +32,6 @@ struct mainView: View {
                     .foregroundColor(.black)
             }), trailing: Button(action: {
                 showSheet = true
-                //vm.fetchStaticGroup()
             }, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.black)
@@ -44,5 +46,6 @@ struct mainView: View {
 struct mainView_Previews: PreviewProvider {
     static var previews: some View {
         mainView()
+            .environmentObject(groupsViewModel())
     }
 }

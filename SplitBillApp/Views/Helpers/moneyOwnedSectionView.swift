@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct moneyOwnedSectionView: View {
+    @EnvironmentObject var vmEnv: groupsViewModel
     var moneyOwned: Int
     var body: some View {
         VStack {
@@ -31,5 +32,6 @@ struct moneyOwnedSectionView: View {
 struct moneyOwnedSectionView_Previews: PreviewProvider {
     static var previews: some View {
         moneyOwnedSectionView(moneyOwned: 2)
+            .environmentObject(groupsViewModel())
     }
 }

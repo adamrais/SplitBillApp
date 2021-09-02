@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct GroupContainers: View {
-//    var name: String
-//    var numberOfPerson: Int
-//    var dateCreated: Date
+    @EnvironmentObject var vmEnv: groupsViewModel
     let groupInfo: group
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
-                    .fill(Color.black)
+                    .fill(Color(.systemIndigo))
                     .frame(width: 370, height: 150)
                     .cornerRadius(15)
                 VStack {
                     HStack {
                         Text("\(groupInfo.name)")
+                        Text("\(vmEnv.currentGroupInfo?.name ?? "")")
                         Spacer()
                         Label(
                             title: { Text("\(groupInfo.numberOfPerson)") },
@@ -29,10 +28,10 @@ struct GroupContainers: View {
                         )
                     }.padding()
                     .font(.title2)
-                    VStack {
-                        Text("Date created: ")
+                    VStack(alignment: .leading) {
+                        Text("Last update: ")
                         Text(groupInfo.dateCreated, style: .date)
-                    }
+                    }.padding(.trailing, 200)
                 }.foregroundColor(.white)
                 .padding()
             }
@@ -42,6 +41,7 @@ struct GroupContainers: View {
 
 struct GroupContainers_Previews: PreviewProvider {
     static var previews: some View {
-        GroupContainers(groupInfo: group(name: "group1", numberOfPerson: 2, dateCreated: Date()))
+        GroupContainers(groupInfo: group(name: "group1", numberOfPerson: 2, dateCreated: Date(), moneyBack: 0, moneyDebt: 0))
+            .environmentObject(groupsViewModel())
     }
 }
